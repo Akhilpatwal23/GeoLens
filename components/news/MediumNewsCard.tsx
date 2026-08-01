@@ -24,7 +24,7 @@ const MediumNewsCard = ({ article }: Props) => {
 
       <div className="p-5">
         <span className="text-sm font-semibold text-blue-600">
-          {article.category}
+          {article.feed}
         </span>
 
         <h3 className="mt-2 text-xl font-bold text-slate-900">

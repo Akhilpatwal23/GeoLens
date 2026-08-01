@@ -30,7 +30,7 @@ const CompactNewsCard = ({ article }: Props) => {
 
         <div className="flex flex-1 flex-col">
           <span className="mb-2 text-xs font-semibold uppercase tracking-wide text-blue-700">
-            {article.category}
+            {article.feed}
           </span>
 
           <h3 className="line-clamp-2 text-base font-bold leading-snug text-gray-900">

@@ -3,7 +3,7 @@ import { NewsArticle } from "@/types/news";
 type CreateNewsArticleParams = {
   id: string;
   title: string;
-  category: string;
+  feed: string;
   slug?: string;
   summary?: string;
   image?: string;
@@ -15,7 +15,7 @@ type CreateNewsArticleParams = {
 export const createNewsArticle = ({
   id,
   title,
-  category,
+  feed,
   slug,
   summary,
   image,
@@ -26,7 +26,7 @@ export const createNewsArticle = ({
   return {
     id,
     title,
-    category,
+    feed,
     slug: slug ?? id,
 
     summary:
@@ -49,5 +49,7 @@ export const createNewsArticle = ({
    on maritime security and economic cooperation.
    The initiative is expected to improve strategic relations across the
    Indo-Pacific region while encouraging trade and stability.`,
+
+    tags: [],
   };
 };

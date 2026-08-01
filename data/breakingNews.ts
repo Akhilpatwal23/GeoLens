@@ -4,7 +4,7 @@ export const breakingNews = [
   createNewsArticle({
     id: "breaking-1",
     title: "India strengthens maritime cooperation across the Indo-Pacific",
-    category: "Breaking",
+    feed: "Breaking",
     publishedAt: "2m ago",
     slug: "india-maritime",
   }),
@@ -12,7 +12,7 @@ export const breakingNews = [
   createNewsArticle({
     id: "breaking-2",
     title: "Oil prices surge following Middle East tensions",
-    category: "Breaking",
+    feed: "Breaking",
     publishedAt: "12m ago",
     slug: "oil-prices",
   }),
@@ -20,7 +20,7 @@ export const breakingNews = [
   createNewsArticle({
     id: "breaking-3",
     title: "BRICS leaders prepare for annual summit",
-    category: "Breaking",
+    feed: "Breaking",
     publishedAt: "20m ago",
     slug: "brics-summit",
   }),
@@ -28,7 +28,7 @@ export const breakingNews = [
   createNewsArticle({
     id: "breaking-4",
     title: "China begins new naval drills near Taiwan",
-    category: "Breaking",
+    feed: "Breaking",
     publishedAt: "35m ago",
     slug: "taiwan-drills",
   }),

@@ -36,7 +36,7 @@ if (image) {
 }
 
 return image;
-  } catch (error) {
+  } catch {
     return null;
   }
 }

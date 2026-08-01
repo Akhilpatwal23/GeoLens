@@ -1,4 +1,3 @@
-import Link from "next/link";
 import MediumNewsCard from "@/components/news/MediumNewsCard";
 import { NewsArticle } from "@/types/news";
 

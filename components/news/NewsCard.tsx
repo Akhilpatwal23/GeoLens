@@ -22,7 +22,7 @@ const NewsCard = ({ article }: Props) => {
 
       <div className="p-5">
         <span className="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
-          {article.category}
+          {article.feed}
         </span>
 
         <h3 className="mt-4 line-clamp-2 text-xl font-bold leading-snug text-gray-900">

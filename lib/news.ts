@@ -22,7 +22,7 @@ export function getRelatedArticles(
 ) {
   return allArticles.filter(
     (article) =>
-      article.category === category &&
+      article.feed === category &&
       article.slug !== currentSlug
   );
 }

@@ -25,7 +25,7 @@ const FeaturedNewsCard = ({ article }: Props) => {
       {/* Content */}
       <div className="p-8">
         <span className="inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
-          {article.category}
+          {article.feed}
         </span>
 
         <h2 className="mt-5 text-3xl font-bold leading-tight text-gray-900 lg:text-5xl">

@@ -1,4 +1,12 @@
-export function extractImage(item: any): string {
+type FeedItem = {
+  enclosure?: { url?: string };
+  "media:content"?: { $?: { url?: string } };
+  "media:thumbnail"?: { $?: { url?: string } };
+  "content:encoded"?: string;
+  content?: string;
+};
+
+export function extractImage(item: FeedItem): string {
   // RSS enclosure
   if (item.enclosure?.url) {
     return item.enclosure.url;

@@ -29,17 +29,9 @@ export function classifyArticles(
 
    
     return {
-
       ...article,
-
       tags,
-
-      primaryCategory:
-        tags[0] ?? "General",
-
-      category:
-        tags[0] ?? "General"
-
+      feed: tags[0] ?? "General",
     };
 
   });
