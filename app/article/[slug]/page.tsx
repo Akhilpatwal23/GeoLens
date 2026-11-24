@@ -11,6 +11,9 @@ import {
   getArticleBySlug,
   getRelatedArticles,
 } from "@/services/news/article.service";
+import { simplifyNews } from "@/services/ai/explain";
+import ArticleInsight from "@/components/article/ArticleInsight";
+import ArticleAskBox from "@/components/article/ArticleAskBox";
 
 type Props = {
   params: Promise<{
@@ -31,14 +34,23 @@ export default async function ArticlePage({ params }: Props) {
     article.feed,
     article.slug
   );
+  const insight = await simplifyNews(article);
 
   return (
     <ArticleLayout>
       <ArticleHero article={article} />
 
       <ArticleReadingLayout
-        content={<ArticleBody article={article} />}
-        sidebar={<AISidebar />}
+        content={
+          <div className="space-y-8">
+            <ArticleBody article={article} />
+            <ArticleInsight insight={insight} />
+            <ArticleAskBox articleSlug={article.slug} />
+          </div>
+        }
+        sidebar={
+          <AISidebar insight={insight} />
+        }
       />
 
       <RelatedArticles articles={relatedArticles} />

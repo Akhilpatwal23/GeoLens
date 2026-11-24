@@ -5,16 +5,16 @@ type Props = {
 };
 
 const ArticleBody = ({ article }: Props) => {
-  const paragraphs = article.content
+  const paragraphs = (article.content.trim() || article.summary.trim())
     .split("\n")
     .filter(Boolean);
 
   return (
-    <section className="space-y-6">
+    <section className="space-y-5">
       {paragraphs.map((paragraph, index) => (
         <p
           key={index}
-          className="text-lg leading-9 text-slate-700"
+          className="text-base leading-8 text-slate-700 md:text-lg"
         >
           {paragraph}
         </p>

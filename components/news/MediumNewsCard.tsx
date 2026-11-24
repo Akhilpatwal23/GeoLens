@@ -18,6 +18,8 @@ const MediumNewsCard = ({ article }: Props) => {
           src={article.image}
           alt={article.title}
           fill
+          unoptimized
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           className="object-cover transition duration-300 group-hover:scale-105"
         />
       </div>

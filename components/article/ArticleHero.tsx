@@ -9,7 +9,7 @@ type Props = {
 
 const ArticleHero = ({ article }: Props) => {
   return (
-    <header className="mb-12">
+    <header className="mb-6">
       {/* Category */}
 
      <span className="inline-flex rounded-full bg-sky-100 px-4 py-2 text-sm font-semibold text-sky-700">
@@ -18,15 +18,20 @@ const ArticleHero = ({ article }: Props) => {
 
       {/* Title */}
 
-      <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
+      <h1 className="mt-4 max-w-5xl text-4xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-5xl">
         {article.title}
       </h1>
 
       {/* Summary */}
 
-      <p className="mt-6 max-w-4xl text-xl leading-9 text-slate-600">
-        {article.summary}
-      </p>
+      <div className="mt-5 max-w-3xl border-l-2 border-blue-600 pl-5">
+        <p className="mb-1 text-xs font-bold uppercase tracking-wider text-blue-700">
+          Article overview
+        </p>
+        <p className="text-xl leading-8 text-slate-700">
+          {article.summary}
+        </p>
+      </div>
 
       {/* Meta */}
 
@@ -45,15 +50,18 @@ const ArticleHero = ({ article }: Props) => {
 
       {/* Hero Image */}
 
-      <div className="relative mt-10 h-[260px] overflow-hidden rounded-3xl md:h-[420px] lg:h-[550px]">
+      <div className="relative mt-6 h-[240px] overflow-hidden rounded-2xl md:h-[380px] lg:h-[460px]">
         <Image
           src={article.image}
           alt={article.title}
           fill
           priority
+          unoptimized
+          sizes="(max-width: 768px) 100vw, 1200px"
           className="object-cover"
         />
       </div>
+
     </header>
   );
 };

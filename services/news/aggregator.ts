@@ -12,43 +12,20 @@ export async function aggregateNews(): Promise<NewsArticle[]> {
     fetchRSS(RSS_FEEDS.HINDUSTAN_TIMES.WORLD),
   ]);
 
-  const articles: NewsArticle[] = [];
+  const articleGroups = [
+    { feed: feeds[0], source: "The Hindu", category: "India" },
+    { feed: feeds[1], source: "The Hindu", category: "World" },
+    { feed: feeds[2], source: "Hindustan Times", category: "India" },
+    { feed: feeds[3], source: "Hindustan Times", category: "World" },
+  ];
 
-  // The Hindu - India
-  if (feeds[0]) {
-    for (const item of feeds[0].items) {
-      articles.push(
-        await normalizeArticle(item, "The Hindu", "India")
-      );
-    }
-  }
-
-  // The Hindu - World
-  if (feeds[1]) {
-    for (const item of feeds[1].items) {
-      articles.push(
-        await normalizeArticle(item, "The Hindu", "World")
-      );
-    }
-  }
-
-  // Hindustan Times - India
-  if (feeds[2]) {
-    for (const item of feeds[2].items) {
-      articles.push(
-        await normalizeArticle(item, "Hindustan Times", "India")
-      );
-    }
-  }
-
-  // Hindustan Times - World
-  if (feeds[3]) {
-    for (const item of feeds[3].items) {
-      articles.push(
-        await normalizeArticle(item, "Hindustan Times", "World")
-      );
-    }
-  }
+  const articles = (
+    await Promise.all(
+      articleGroups.flatMap(({ feed, source, category }) =>
+        feed ? feed.items.map((item) => normalizeArticle(item, source, category)) : []
+      )
+    )
+  ).flat();
 
   return articles;
 }

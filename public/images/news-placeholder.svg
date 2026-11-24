@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="News placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#dbeafe"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="600" cy="320" r="180" fill="#93c5fd" opacity="0.75"/>
+  <path d="M330 540h540c25 0 45-20 45-45v-40c0-25-20-45-45-45H330c-25 0-45 20-45 45v40c0 25 20 45 45 45Z" fill="#1d4ed8" opacity="0.85"/>
+  <path d="M420 270h360l72 110H348l72-110Z" fill="#f8fafc" opacity="0.8"/>
+  <rect x="430" y="390" width="340" height="34" rx="17" fill="#f8fafc" opacity="0.9"/>
+  <rect x="500" y="445" width="200" height="22" rx="11" fill="#bfdbfe"/>
+  <rect x="470" y="485" width="260" height="22" rx="11" fill="#bfdbfe"/>
+</svg>

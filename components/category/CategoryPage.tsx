@@ -20,7 +20,13 @@ export default function CategoryPage({
           {title}
         </h1>
 
-        <NewsGrid articles={articles} />
+        {articles.length > 0 ? (
+          <NewsGrid articles={articles} />
+        ) : (
+          <p className="border-t border-gray-200 py-6 text-gray-600">
+            No current stories match this topic. Check back after the next news refresh.
+          </p>
+        )}
 
       </section>
     </Container>

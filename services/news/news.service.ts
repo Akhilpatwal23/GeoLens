@@ -8,13 +8,18 @@ export async function getHomepageNews() {
 
     const news =
         await buildNewsPipeline();
-       
-        
 
     return {
 
         hero:
             getTopStory(news),
+
+    latest:
+      [...news].sort((a, b) => {
+        const dateA = Date.parse(a.publishedAt) || 0;
+        const dateB = Date.parse(b.publishedAt) || 0;
+        return dateB - dateA;
+      })[0],
 
         india:
             byFeed(news, "India"),
@@ -68,4 +73,28 @@ export async function getMilitaryPageNews() {
     article.title.toLowerCase().includes("air force") ||
     article.title.toLowerCase().includes("missile")
   );
+}
+
+export async function getTopicPageNews(topicSlug: string) {
+  const topic = decodeURIComponent(topicSlug)
+    .replace(/-/g, " ")
+    .trim()
+    .toLowerCase();
+  const normalizedTopic = topic.replace(/[^a-z0-9 ]/g, "").replace(/\s+/g, " ");
+  const articles = await buildNewsPipeline();
+
+  return articles.filter((article) => {
+    const searchableText = [
+      article.title,
+      article.summary,
+      article.content,
+      ...article.tags,
+    ]
+      .join(" ")
+      .toLowerCase()
+      .replace(/[^a-z0-9 ]/g, " ")
+      .replace(/\s+/g, " ");
+
+    return searchableText.includes(normalizedTopic);
+  });
 }

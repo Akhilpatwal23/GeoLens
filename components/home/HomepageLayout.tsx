@@ -12,7 +12,7 @@ const HomepageLayout = async () => {
     <Container>
       <div className="space-y-12 py-8">
 
-        <BreakingNewsBar />
+        <BreakingNewsBar article={homepage.latest} />
 
   <Hero article={homepage.hero} />
 

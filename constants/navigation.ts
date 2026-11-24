@@ -23,8 +23,4 @@ export const NAV_LINKS = [
     title: "Military",
     href: "/military",
   },
-  {
-    title: "Explained",
-    href: "/explained",
-  },
 ];

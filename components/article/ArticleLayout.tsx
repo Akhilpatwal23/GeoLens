@@ -9,7 +9,7 @@ type Props = {
 const ArticleLayout = ({ children }: Props) => {
   return (
     <Container>
-      <article className="mx-auto max-w-5xl py-10 lg:py-14">
+      <article className="mx-auto max-w-6xl py-8 lg:py-10">
         {children}
       </article>
     </Container>

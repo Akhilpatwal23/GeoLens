@@ -1,40 +1,23 @@
-import AIExplanationCard from "./AIExplanationCard";
-import TimelineCard from "./TimelineCard";
-import WhyItMattersCard from "./WhyItMattersCard";
 import KeyTermsCard from "./KeyTermsCard";
 import TagsCard from "./TagsCard";
 
+import { ArticleInsight } from "@/types/articleInsight";
 
-import { articleKnowledge } from "@/data/knowledge";
+type Props = {
+  insight: ArticleInsight;
+};
 
-const AISidebar = () => {
+const AISidebar = ({ insight }: Props) => {
+  const terms = insight.topics.slice(0, 4).map((topic) => ({
+    term: topic,
+    meaning: "Key topic discussed in this article",
+  }));
+
   return (
-    <div className="space-y-6">
-      <AIExplanationCard
-        summary={articleKnowledge.summary}
-      />
-
-      <TimelineCard
-        timeline={articleKnowledge.timeline}
-      />
-
-      <WhyItMattersCard
-        text={articleKnowledge.whyItMatters}
-      />
-
-      <KeyTermsCard
-        terms={articleKnowledge.keyTerms}
-      />
-
-      <TagsCard
-        title="Countries"
-        tags={articleKnowledge.countries}
-      />
-
-      <TagsCard
-        title="Organizations"
-        tags={articleKnowledge.organizations}
-      />
+    <div className="space-y-4">
+      {terms.length > 0 && <KeyTermsCard terms={terms} />}
+      {insight.countries.length > 0 && <TagsCard title="Countries" tags={insight.countries} />}
+      {insight.organizations.length > 0 && <TagsCard title="Organizations" tags={insight.organizations} />}
     </div>
   );
 };

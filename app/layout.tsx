@@ -22,7 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try { var theme = localStorage.getItem('geoscope-theme'); if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark'); } catch {}`,
+          }}
+        />
+      </head>
       <body className={`${geist.className} bg-slate-50 text-gray-900`}>
         <div className="flex min-h-screen flex-col">
           <Navbar />

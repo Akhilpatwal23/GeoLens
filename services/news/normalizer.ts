@@ -1,5 +1,5 @@
 import { NewsArticle } from "@/types/news";
-import { getArticleImage } from "./media/imageExtractor";
+import { extractImage } from "./imageExtractor";
 
 type FeedItem = {
   link?: string;
@@ -7,7 +7,11 @@ type FeedItem = {
   title?: string;
   contentSnippet?: string;
   content?: string;
+  "content:encoded"?: string;
   pubDate?: string;
+  enclosure?: { url?: string };
+  "media:content"?: { url?: string; $?: { url?: string } } | { url?: string; $?: { url?: string } }[];
+  "media:thumbnail"?: { url?: string; $?: { url?: string } } | { url?: string; $?: { url?: string } }[];
 };
 
 export async function normalizeArticle(
@@ -15,12 +19,9 @@ export async function normalizeArticle(
   source: string,
   category: string
 ): Promise<NewsArticle> {
+  const image = extractImage(item);
 
-  let image: string | null = null;
-  if (item.link) {
-    image = await getArticleImage(item.link);
-  }
-  return {
+  return {
     id: item.guid ?? item.link ?? crypto.randomUUID(),
 
     title: item.title ?? "",
@@ -29,7 +30,7 @@ export async function normalizeArticle(
 
     content: item.content ?? item.contentSnippet ?? "",
 
-    image: image ?? "/images/news-placeholder.jpg",
+    image,
     source,
     publishedAt: item.pubDate ?? "",
     feed: category,
